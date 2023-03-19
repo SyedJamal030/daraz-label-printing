@@ -1,0 +1,14 @@
+directories:
+  output: dist
+  buildResources: assets
+extends: null
+appId: com.smjwsb.daraz-label-printing
+files:
+  - filter:
+      - dist/**/*
+      - build/**/*
+      - node_modules/**/*
+      - package.json
+extraMetadata:
+  main: build/main.js
+electronVersion: 23.1.4
