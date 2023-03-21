@@ -9,13 +9,13 @@ require("@electron/remote/main").initialize();
 
 const defaultConfig = {
     title: "Daraz Label Printing",
-    icon: path.join(__dirname, '/logo512.png'),
+    icon: path.join(__dirname, '/icon.ico'),
     autoHideMenuBar: true,
     width: 1200,
     height: 800
 }
 
-const app_url = isDev ? "http://localhost:3000" : `file://${path.join(__dirname, '../build/index.html')}`
+const startUrl = isDev ? "http://localhost:3000" : `file://${path.join(__dirname, '../build/index.html')}`
 
 const createWindow = () => {
     const mainWindow = new BrowserWindow({
@@ -34,8 +34,7 @@ const createWindow = () => {
     });
 
     splash.loadFile(path.join(__dirname, '/splash.html'));
-
-    mainWindow.loadURL(app_url)
+    mainWindow.loadURL(startUrl)
     mainWindow.setSkipTaskbar(true);
     mainWindow.minimize();
     if (!isDev) {
@@ -78,6 +77,7 @@ const createWindow = () => {
 
 }
 
+app.removeAllListeners('ready');
 app.on("ready", createWindow)
 
 app.on('activate', () => {

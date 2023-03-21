@@ -1,9 +1,8 @@
 import React from "react";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 import { Home } from "./pages/Home"
 import { PDFProcessing, PDFPreview } from "./pages/PDF"
-import { NotFound } from "./pages/404"
 
 const App = () => {
   const navigate = useNavigate();
@@ -15,6 +14,8 @@ const App = () => {
     const to = isInitialLocation ? fallbackPath : -1;
     navigate(to, { replace: true });
   };
+
+  console.log(pathname);
 
   return (
     <div>
@@ -32,10 +33,10 @@ const App = () => {
         )
       }
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} exact />
         <Route path="/process" element={<PDFProcessing />} />
         <Route path="/preview" element={<PDFPreview />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Navigate to={"/"} />} />
       </Routes>
     </div>
   );

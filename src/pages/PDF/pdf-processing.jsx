@@ -27,7 +27,6 @@ const PDFProcessing = () => {
 
             setImages([])
             Promise.all(promises).then((responses) => {
-                console.log(responses);
                 setImages((prev) => [...prev, ...responses.flat(2)])
             }).finally(() => setLoading(false))
         }
