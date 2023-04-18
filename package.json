@@ -1,7 +1,7 @@
 {
   "name": "daraz-label-printing",
   "productName": "Daraz Label Printing",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This application automatically separates and combine order invoice and label from pdf to save time and printing cost",
   "private": true,
   "dependencies": {
@@ -27,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron:serve": "concurrently -k \"npm run electron:start\" \"cross-env Browser=none npm start\"",
+    "electron:serve": "concurrently -k \"cross-env Browser=none npm start\" \"npm run electron:start\"",
     "electron:build": "npm run build && electron-builder --win --x64 -c.extraMetadata.main=build/main.js",
     "electron:start": "wait-on http://127.0.0.1:3000 && electron ."
   },

@@ -61,6 +61,11 @@ div#print-div[data-size="A4"][data-layout="landscape"] {
 
 
 @media print {
+    
+    body,
+    html {
+        background-color: transparent !important;
+    }
 
     .break-page {
         clear: both;
@@ -75,18 +80,11 @@ div#print-div[data-size="A4"][data-layout="landscape"] {
         display: none !important;
     }
 
-    .print-m-p-0 {
-        box-shadow: none !important;
-        margin: 0 auto !important;
-        padding: 0 !important;
-    }
-
     div#print-div {
         width: 100vw !important;
         height: 100vh !important;
         box-shadow: none !important;
         
-        padding: 0 !important;
         margin: 0 !important;
         overflow: visible !important;
     }
@@ -94,11 +92,14 @@ div#print-div[data-size="A4"][data-layout="landscape"] {
     #merged-images-container .container {
         background-color: transparent !important;
     }
-
-    body,
-    html {
-        background-color: transparent !important;
-        margin: 0 !important;
+    
+    .print-m-p-0 {
+        box-shadow: none !important;
+        margin: 0 auto !important;
         padding: 0 !important;
     }
+}
+
+@page {
+    margin: 0cm !important;
 }

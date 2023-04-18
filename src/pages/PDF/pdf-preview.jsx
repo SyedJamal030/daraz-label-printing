@@ -53,8 +53,8 @@ const PDFPreview = () => {
                     <button className="btn btn-success px-5 mx-1" onClick={printLabel}>Print</button>
                     <button className="btn btn-outline-light px-4 mx-1" onClick={handleFilesReset}>Close</button>
                 </div>
-                <div data-size="A4" data-layout="landscape" id='print-div' ref={printDiv} className='position-relative p-2'>
-                    <div className="container-fluid">
+                <div data-size="A4" data-layout="landscape" id='print-div' ref={printDiv} className='position-relative'>
+                    <div className="container-fluid py-3">
                         {
                             (selectedPages.length > 0) && (
                                 selectedPages.reduce(function (rows, key, index) {
@@ -79,15 +79,25 @@ const PDFPreview = () => {
 
 const RenderCol = ({ page }) => {
 
-    const [width, setWidth] = useState("");
+    const [width, setWidth] = useState("41.66666667");
+    const [col, setCol] = useState("col-5");
     const handleWidth = (ev) => {
-        smalltalk.prompt('set width in percentage', "", width)
-            .then((value) => setWidth(value))
+        smalltalk.prompt('set width in percentage', "if you want to change col class you can added it like so 'width%col-5'", width)
+            .then((value) => {
+                const val = value.toString().split("%");
+                if(Number(val[0])) {
+                    setWidth(val[0])
+                }
+                
+                if(val[1].toString().startsWith("col")) {
+                    setCol(val[1])
+                }
+            })
             .catch(() => console.error("cancelled"))
     }
 
     return (
-        <div className="col-5" onClick={handleWidth} style={{ width: `${width}%` }}>
+        <div className={col} onClick={handleWidth} style={{ width: `${width}%` }}>
             <img src={page} alt="print page preview" className="img-fluid print-m-p-0" />
         </div>
     )

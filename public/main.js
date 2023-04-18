@@ -20,6 +20,7 @@ const startUrl = isDev ? "http://localhost:3000" : `file://${path.join(__dirname
 const createWindow = () => {
     const mainWindow = new BrowserWindow({
         ...defaultConfig,
+        show: false,
         webPreferences: {
             enableRemoteModule: true,
             contextIsolation: false,
@@ -30,13 +31,13 @@ const createWindow = () => {
     const splash = new BrowserWindow({
         ...defaultConfig,
         fullscreenable: false,
-        alwaysOnTop: true,
     });
 
     splash.loadFile(path.join(__dirname, '/splash.html'));
+    
     mainWindow.loadURL(startUrl)
     mainWindow.setSkipTaskbar(true);
-    mainWindow.minimize();
+
     if (!isDev) {
         splash.removeMenu();
         mainWindow.removeMenu();
@@ -44,14 +45,15 @@ const createWindow = () => {
 
     mainWindow.once('ready-to-show', () => {
         splash.destroy();
-        mainWindow.setSkipTaskbar(false);
+        
         mainWindow.show();
+        mainWindow.setSkipTaskbar(false);
     });
 
 
     // when worker window is ready
     ipcMain.on("readyToPrintPDF", (event) => {
-        const pdfPath = path.join(os.homedir(), `/Downloads/'Daraz_${new Date().getTime()}_Label.pdf`);
+        const pdfPath = path.join(os.homedir(), `/Downloads/Daraz_${new Date().getTime()}_Label.pdf`);
         // Use default printing options
         mainWindow.webContents.printToPDF({
             landscape: true,
@@ -60,7 +62,7 @@ const createWindow = () => {
             color: true,
             pageSize: 'A4',
             margins: {
-                marginType: "printableArea"
+                marginType: "none"
             }
         }).then((data) => {
             fs.writeFile(pdfPath, data, function (error) {

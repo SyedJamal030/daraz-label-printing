@@ -47,8 +47,6 @@ const PDFProcessing = () => {
         } else {
             setSelections((prev) => {
                 const newFiles = [...prev]
-                // newFiles.filter((f) => f.identifier === file.identifier)
-                // newFiles.splice(newFiles.indexOf(file), 1)
                 return newFiles.filter((f) => f.identifier !== file.identifier)
             })
         }
@@ -144,7 +142,7 @@ const convertPdfToImages = async (file) => {
         await page.render({ canvasContext: context, viewport: viewport }).promise;
         images.push({
             identifier: i,
-            content: trimCanvas(canvas).toDataURL('image/png', 1)
+            content: trimCanvas(canvas).toDataURL('image/png', 1),
         });
     }
     canvas.remove();
