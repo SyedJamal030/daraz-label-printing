@@ -101,7 +101,7 @@
               docId,
               apiVersion
             } = docParams;
-            const workerVersion = '3.4.120';
+            const workerVersion = '3.11.174';
             if (apiVersion !== workerVersion) {
               throw new Error(`The API version "${apiVersion}" does not match ` + `the Worker version "${workerVersion}".`);
             }
@@ -64625,7 +64625,7 @@ endcmap CMapName currentdict /CMap defineresource pop end end`;
         }
       }));
       var _worker = __w_pdfjs_require__(1);
-      const pdfjsVersion = '3.4.120';
+      const pdfjsVersion = '3.11.174';
       const pdfjsBuild = 'af6414988';
     })();
 

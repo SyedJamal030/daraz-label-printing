@@ -76,7 +76,7 @@ const PDFProcessing = () => {
                                 filesInImages.flatMap((file) => {
                                     const d = Date.now();
                                     const page = file.identifier;
-                                    
+
                                     return (
                                         <div className="col-xl-2 col-lg-3 col-md-6" key={page}>
                                             <div className="my-2">
@@ -129,6 +129,7 @@ const convertPdfToImages = async (file) => {
     const data = await readFileData(file);
     const pdf = await getDocument(data).promise;
     const canvas = document.createElement("canvas");
+
     if (pdf.numPages > 5) {
         throw new Error("max page count allowed is: 5")
     }
