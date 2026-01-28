@@ -9,7 +9,9 @@ require("@electron/remote/main").initialize();
 let mainWindow;
 let splashWindow;
 
-const appIcon = path.join(__dirname, "../../public/icons/icon.ico");
+const appIcon = path.join(__dirname, isDev ? '../../public/icons/icon.ico' : '../../build/icons/icon.ico');
+const startUrl = isDev ? "http://localhost:3000" : `file://${path.join(__dirname, '../../build/index.html')}`
+
 const WINDOW_CONFIG = {
   title: "Daraz Label Printing",
   width: 1200,
@@ -29,13 +31,10 @@ const createWindows = () => {
     width: 500,
     height: 300,
     frame: false,
+    icon: appIcon,
     transparent: true,
     alwaysOnTop: true,
   });
-
-  const startUrl = isDev
-    ? "http://localhost:3000"
-    : `file://${path.join(__dirname, "../build/index.html")}`;
 
   const splashUrl = path.join(__dirname, "splash.html");
 
