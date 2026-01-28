@@ -1,0 +1,105 @@
+#print-area {
+  background-color: #323639;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+  min-height: 100vh;
+}
+
+.preview-canvas-a4 {
+  background: white !important;
+  width: 297mm;
+  height: 210mm;
+  margin-bottom: 30px;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  flex-wrap: wrap;
+  align-content: start;
+  align-items: start !important;
+  justify-content: center;
+  padding: 10mm;
+}
+
+.label-item-wrapper {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.label-card {
+  position: relative;
+  width: 100%;
+  border: 1px solid #eee;
+  box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+  background: white;
+}
+
+.label-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  mix-blend-mode: multiply;
+}
+
+.label-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+  z-index: 10;
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    visibility: hidden;
+  }
+  #print-area {
+    visibility: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 297mm;
+    padding: 0;
+    background: none;
+  }
+  .preview-canvas-a4 {
+    margin: 0 !important;
+    padding: 15mm !important;
+    height: auto;
+    box-shadow: none !important;
+    page-break-after: always !important;
+  }
+  .preview-canvas-a4:last-child {
+    page-break-after: auto !important;
+  }
+  .hide-for-print {
+    display: none !important;
+  }
+
+  .label-card {
+    box-shadow: none !important;
+    outline: none !important;
+    border-radius: 0 !important;
+  }
+
+  .label-card:hover {
+    outline: none !important;
+    border-radius: 0 !important;
+  }
+}
+
+.label-card:hover {
+  outline: 2px dashed #0dcaf0;
+  border-radius: 8px;
+}

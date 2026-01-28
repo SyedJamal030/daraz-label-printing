@@ -1,9 +1,18 @@
 {
   "name": "daraz-label-printing",
   "productName": "Daraz Label Printing",
-  "version": "1.0.2",
-  "description": "This application automatically separates and combine order invoice and label from pdf to save time and printing cost",
+  "version": "1.1.0",
+  "description": "Professional tool to separate and combine order invoices and labels from PDF to save printing cost.",
   "private": true,
+  "author": "Syed Jamal",
+  "keywords": [
+    "daraz",
+    "sellercenter",
+    "daraz label",
+    "shipping label"
+  ],
+  "main": "src/main/main.js",
+  "homepage": "./",
   "dependencies": {
     "@electron/remote": "^2.1.2",
     "@testing-library/jest-dom": "^5.17.0",
@@ -19,43 +28,37 @@
     "smalltalk": "^4.1.2",
     "web-vitals": "^2.1.4"
   },
-  "main": "public/main.js",
-  "homepage": "./",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "electron:serve": "concurrently -k \"cross-env Browser=none npm start\" \"npm run electron:start\"",
-    "electron:build": "npm run build && electron-builder --win --x64 -c.extraMetadata.main=build/main.js",
-    "electron:start": "wait-on http://127.0.0.1:3000 && electron ."
+    "electron:serve": "concurrently -k \"cross-env BROWSER=none npm start\" \"npm run electron:start\"",
+    "electron:start": "wait-on http://127.0.0.1:3000 && electron .",
+    "electron:build": "npm run build && electron-builder --win --x64"
   },
   "build": {
-    "extends": null,
-    "npmRebuild": false,
     "appId": "com.smjwsb.daraz-label-printing",
     "productName": "Daraz Label Printing",
+    "files": [
+      "build/**/*",
+      "src/main/**/*",
+      "node_modules/**/*"
+    ],
     "directories": {
       "buildResources": "public"
     },
     "win": {
       "target": "portable",
-      "icon": "public/icon.ico"
+      "icon": "icons/icon.ico"
     }
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3",
+    "electron": "^23.3.13",
+    "electron-builder": "^23.6.0",
+    "wait-on": "^7.2.0"
   },
-  "keywords": [
-    "daraz",
-    "sellercenter",
-    "daraz label",
-    "shipping label"
-  ],
-  "author": "Syed Jamal",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -67,12 +70,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "concurrently": "^7.6.0",
-    "cross-env": "^7.0.3",
-    "electron": "^23.3.13",
-    "electron-builder": "^23.6.0",
-    "wait-on": "^7.2.0"
   }
 }
