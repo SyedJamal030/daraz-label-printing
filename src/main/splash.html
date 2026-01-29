@@ -1,93 +1,104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/icons/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <meta name="theme-color" content="#000000" />
-    <meta name="description"
-        content="Thanks for visiting the Daraz Label Printing Application. Simply submit your invoice and shipping labels here, and the system will create a single document with flawlessly adjusted PDF that you can print all at once." />
+    <meta
+      name="description"
+      content="Thanks for visiting the Daraz Label Printing Application. Simply submit your invoice and shipping labels here, and the system will create a single document with flawlessly adjusted PDF that you can print all at once."
+    />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/icons/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Please Wait... | Daraz Label Printing</title>
 
     <style>
-        body {
-            background-color: #282c34;
-            transition: background 0.7s 0.3s;
-            padding: 0;
-            margin: 0;
+      body {
+        background-color: #282c34;
+        transition: background 0.7s 0.3s;
+        padding: 0;
+        margin: 0;
+      }
+
+      .splashscreen {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+      }
+
+      .splashscreen-logo {
+        width: 192px;
+        height: 192px;
+        margin: auto auto;
+        transition: all 1s;
+        text-align: center;
+      }
+
+      .splashscreen-logo > img {
+        max-height: 100%;
+        max-width: 100%;
+      }
+
+      #wait-longer .loader {
+        border: 4px solid #f3f3f3;
+        -webkit-animation: spin 1s linear infinite;
+        animation: spin 1s linear infinite;
+        border-top: 4px solid #282c34;
+        border-radius: 50%;
+        margin: 50px auto 5px auto;
+        width: 25px;
+        height: 25px;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
         }
 
-        .splashscreen {
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            align-content: center;
+        100% {
+          transform: rotate(360deg);
         }
-
-        .splashscreen-logo {
-            width: 192px;
-            height: 192px;
-            margin: auto auto;
-            transition: all 1s;
-            text-align: center;
-        }
-
-        .splashscreen-logo>img {
-            max-height: 100%;
-            max-width: 100%;
-        }
-
-        #wait-longer .loader {
-            border: 4px solid #f3f3f3;
-            -webkit-animation: spin 1s linear infinite;
-            animation: spin 1s linear infinite;
-            border-top: 4px solid #282c34;
-            border-radius: 50%;
-            margin: 50px auto 5px auto;
-            width: 25px;
-            height: 25px;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div class="splashscreen">
-        <div class="splashscreen-logo">
-            <img src="../assets/logo.png" alt="Loading Screen. Please wait..." />
-            <div id="wait-longer"></div>
-        </div>
+      <div class="splashscreen-logo">
+        <img
+          src=""
+          id="logo-target"
+          alt="Loading Screen. Please wait..."
+        />
+        <div id="wait-longer"></div>
+      </div>
     </div>
 
     <script>
-        const timer = setTimeout(() => {
-            const is_wait = document.getElementById("wait-longer")
-            if (is_wait) {
-                is_wait.innerHTML = `<div class="loader"></div>`
-            }
+      const params = new URLSearchParams(window.location.search);
+      const logoSrc = params.get("logo");
 
-            clearTimeout(timer)
-        }, 3000)
+      if (logoSrc) {
+        document.getElementById("logo-target").src = logoSrc;
+      }
+
+      const timer = setTimeout(() => {
+        const is_wait = document.getElementById("wait-longer");
+        if (is_wait) {
+          is_wait.innerHTML = `<div class="loader"></div>`;
+        }
+
+        clearTimeout(timer);
+      }, 3000);
     </script>
-</body>
-
+  </body>
 </html>

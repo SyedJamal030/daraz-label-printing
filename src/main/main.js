@@ -9,8 +9,13 @@ require("@electron/remote/main").initialize();
 let mainWindow;
 let splashWindow;
 
-const appIcon = path.join(__dirname, isDev ? '../../public/icons/icon.ico' : '../../build/icons/icon.ico');
-const startUrl = isDev ? "http://localhost:3000" : `file://${path.join(__dirname, '../../build/index.html')}`
+const appIcon = path.join(
+  __dirname,
+  isDev ? "../../public/icons/icon.ico" : "../../build/icons/icon.ico",
+);
+const startUrl = isDev
+  ? "http://localhost:3000"
+  : `file://${path.join(__dirname, "../../build/index.html")}`;
 
 const WINDOW_CONFIG = {
   title: "Daraz Label Printing",
@@ -37,8 +42,7 @@ const createWindows = () => {
   });
 
   const splashUrl = path.join(__dirname, "splash.html");
-
-  splashWindow.loadFile(splashUrl);
+  splashWindow.loadURL(`file://${splashUrl}?logo=${encodeURIComponent(appIcon)}`);
   mainWindow.loadURL(startUrl);
 
   const MIN_SPLASH_TIME = 2000; // 2 seconds
@@ -50,8 +54,12 @@ const createWindows = () => {
     const remainingTime = Math.max(0, MIN_SPLASH_TIME - timeElapsed);
 
     setTimeout(() => {
-      if (splashWindow) splashWindow.destroy();
+      if (splashWindow && !splashWindow.isDestroyed()) {
+        splashWindow.destroy();
+      }
       mainWindow.show();
+      mainWindow.focus();
+
       mainWindow.setSkipTaskbar(false);
     }, remainingTime);
   });
