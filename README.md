@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# <img src="public/icons/logo192.png" width="45" /> Daraz Label Printing & PDF Optimizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/SyedJamal030/daraz-label-printing?color=orange)
+![Platform](https://img.shields.io/badge/platform-Windows-blue)
+![License](https://img.shields.io/badge/license-Proprietary-red)
 
-## Available Scripts
+### 📉 Cut your printing costs by up to 60% with smart label nesting.
 
-In the project directory, you can run:
+**Daraz-Label-Printing** is a specialized desktop automation tool built to solve a major pain point for E-commerce sellers: paper waste. By restructuring standard Daraz PDF exports, this app intelligently fits 2 to 3 labels per A4 sheet while maintaining perfect barcode scan-ability.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Why Use This Tool?
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The standard Daraz seller platform generates one shipping label per page. For high-volume stores, this is a logistics bottleneck and a financial drain. 
 
-### `npm test`
+* **Cost Efficiency:** Save up to 60% on paper and ink/toner.
+* **Time Savings:** Convert hours of manual PDF "cutting and pasting" into a two-click process.
+* **Data Privacy:** All processing happens locally on your machine. No invoices or customer data ever leave your computer.
+* **High Fidelity:** Uses a PDF-to-Image pipeline to ensure labels remain crisp and barcodes stay scannable.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ Technical Stack
 
-### `npm run build`
+* **Frontend:** React.js + Bootstrap (Responsive & Intuitive UI)
+* **Desktop Wrapper:** Electron.js (Cross-platform compatibility)
+* **Backend Logic:** Node.js File System (Local file handling)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 💻 Installation & Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### For Users (Download)
+1.  Go to the **[Latest Releases](https://github.com/SyedJamal030/daraz-label-printing/releases/latest)** page.
+2.  Download the `.exe` installer for **Windows**.
+3.  Run the application and start optimizing!
 
-### `npm run eject`
+### For Developers (Build from Source)
+If you want to modify the code or build it yourself:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Clone & Install:**
+   ```bash
+   git clone [https://github.com/](https://github.com/)[Your-Username]/daraz-label-printing.git
+   cd daraz-label-printing
+   npm install
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Run Development Mode:**
+   ```bash
+   npm run electron:serve
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. **Build Portable Executable:**
+   ```bash
+   npm run electron:build
+   ```
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📖 How It Works (3-Step Flow)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **Upload:** Drop your bulk Daraz PDF exports into the app.
+2. **Select:** Preview and select specific pages (ensuring only shipping labels are processed while skipping unnecessary invoices or instructions).
+3. **Auto-Adjust:** The Smart Layout Engine converts pages to layers and realigns them.
+4. **Print:** Export a single, optimized PDF ready for your printer.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🗺️ Roadmap & Recent Updates
 
-### Analyzing the Bundle Size
+* [x] **Bulk Processing:** Enhanced the PDF engine to handle long lists of pages without lag.
+* [x] **UI Polish:** Improved splash screen transitions and workflow.
+* [ ] **Cross-Platform:** Generate and test portable builds for **macOS** and **Linux**.
+* [ ] **Multi-Platform Support:** Expand nesting logic for other regional E-commerce sites (Shopee, Lazada).
+* [ ] **Direct Thermal Printing:** Support for 4x6 thermal label dimensions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📄 License
 
-### Making a Progressive Web App
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+*Developed with ❤️ for the E-commerce Community.*
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
